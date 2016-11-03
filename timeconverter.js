@@ -11,7 +11,7 @@ var TimeConverter = function() {
     "November", "December"];
     
     var getNatural = function(date) {
-        var day = date.getDay();
+        var day = date.getDate();
         var year = date.getFullYear();
         var month = months[date.getMonth()];
         var natural = month + " " + day + ", " + year;
