@@ -8,8 +8,8 @@ var TimeConverter = require("./timeconverter");
 
 var conv = new TimeConverter();
 
-var port =  8080;
-var DEBUG = process.argv[3] || 0;
+var port =  process.env.PORT || 5000;
+var DEBUG =  0;
 
 var reqServed = 0;
 
