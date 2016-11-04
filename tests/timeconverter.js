@@ -3,6 +3,7 @@
 var chai = require("chai");
 var expect = chai.expect;
 
+
 var Conv = require("../timeconverter.js");
 
 describe("TimeConverter", function() {
@@ -18,8 +19,19 @@ describe("TimeConverter", function() {
         
     });
     
-    
     it("Converts unixtime to natural time", function() {
+        var conv = new Conv();
+        var result = conv.convert("0");
+        expect(result.natural).to.match(/1970/);
+        
+        result = conv.convert("1000");
+        expect(result.natural).to.match(/1970/);
+        expect(result.natural).to.match(/January/);
+        
+        var unix = "1449619200000";
+        result = conv.convert(unix);
+        expect(result.natural).to.match(/December/);
+        expect(result.natural).to.match(/2015/);
         
     });
     
@@ -48,6 +60,16 @@ describe("TimeConverter", function() {
         expect(result.natural).to.match(/December/);
         expect(result.natural).to.match(/6/);
         expect(result.natural).to.match(/2011/);
+        
+    });
+    
+    it("Returns null props on wrong input", function() {
+        var conv = new Conv();
+        var input = "-Dec  6, 2011";
+        var result = conv.convert(input);
+        
+        expect(result.natural).to.equal(null);
+        expect(result.unix).to.equal(null);
         
     });
 
