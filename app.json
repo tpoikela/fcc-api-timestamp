@@ -1,0 +1,6 @@
+{
+  "name": "Timestamp Microservice for FreeCodeCamp",
+  "description": "Return unixtime and natural data on request.",
+  "repository": "https://github.com/tpoikela/fcc-api-timestamp",
+  "keywords": ["node", "express", "static"]
+}

@@ -31,12 +31,12 @@ app.listen(port, function () {
 function serveTimeRequest(req, res) {
     var url_parts = url.parse(req.url, true);
     var bodyJSON = JSON.stringify(url_parts);
-    console.log("Got req with body:  " + bodyJSON);
+    if (DEBUG) console.log("Got req with body:  " + bodyJSON);
     
     var path = url_parts.path;
     path = path.substring(1);
     var json = conv.convert(path);
-    console.log("Req starting with char. Path: " + path);
+    if (DEBUG) console.log("Req starting with char. Path: " + path);
     res.send(json);
     res.end();
     
