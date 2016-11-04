@@ -1,15 +1,20 @@
 {
   "name": "timestamp",
   "version": "1.0.0",
-  "description": "A timestamp API",
-  "main": "index.js",
+  "description": "A timestamp microservice",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url":"https://github.com/tpoikela/fcc-api-timestamp.git"
+  },
   "scripts": {
-    "test": "mocha tests/*.js"
+    "test": "mocha tests/*.js",
+    "start": "node server.js"
   },
   "author": "Tuomas Poikela",
+  "email": "tuomas.sakari.poikela@gmail.com",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.15.2",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "express": "^4.14.0"
