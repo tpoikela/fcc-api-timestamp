@@ -18,6 +18,7 @@ var TimeConverter = function() {
         return natural;
     };
     
+    /** Converts unixtime or natural date to both unixtime and a natural date.*/
     this.convert = function(str) {
         var res = {unix: null, natural: null};
         if (this.onlyNum.test(str)) {
@@ -28,12 +29,14 @@ var TimeConverter = function() {
             res.unix = unix;
         }
         else {
-            var value = Date.parse(str);
-            if (!isNaN(value)) {
-                res.unix = value;
-                var date = new Date(value);
-                res.natural = getNatural(date);
-            } 
+            if (/^[a-zA-Z]/.test(str)) { // Verify first letter
+                var value = Date.parse(str);
+                if (!isNaN(value)) {
+                    res.unix = value;
+                    var date = new Date(value);
+                    res.natural = getNatural(date);
+                } 
+            }
         }
         return res;
     };
