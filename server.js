@@ -8,25 +8,21 @@ var TimeConverter = require("./timeconverter");
 
 var conv = new TimeConverter();
 
-var port = process.argv[2] || 8080;
+var port =  8080;
 var DEBUG = process.argv[3] || 0;
 
 var reqServed = 0;
 
-// Respond to pure numeric requests (unixtime)
-app.get(/^\/\d+/, function (req, res) {
-    serveTimeRequest(req,res);
+// Respond to / request with index.html
+app.get('/', function(req, res){
+    res.sendFile(__dirname + '/index.html');
 });
 
 // Respond to requests like /Dec or /XXX
-app.get(/^\/[a-zA-Z]+/, function (req, res) {
+app.get('/*', function (req, res) {
     serveTimeRequest(req, res);
 });
 
-// Respond to any other request with index.html
-app.get('/*', function(req, res){
-    res.sendFile(__dirname + '/index.html');
-});
 
 app.listen(port, function () {
     console.log('Timestamp microservice listening on port ' + port)
